@@ -1,0 +1,9 @@
+steps:
+
+- name: gcr.io/cloud-builders/docker
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$_IMAGE:latest', '-t', 'gcr.io/$PROJECT_ID/$_IMAGE:$SHORT_SHA', '.']
+
+#images: [ 'gcr.io/$PROJECT_ID/$_IMAGE:latest' ]
+
+substitutions:
+    _IMAGE: nginx-alpine
