@@ -20,4 +20,5 @@ steps:
 images: [ 'gcr.io/$PROJECT_ID/$_IMAGE:latest', 'gcr.io/$PROJECT_ID/$_IMAGE:$_TAG' ]
 
 substitutions:
-    _IMAGE: nginx-alpine
+  _TAG: prod
+  _IMAGE: nginx-alpine
