@@ -7,7 +7,7 @@ steps:
   args: [ 'version' ]
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=europe-west2-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=next2019'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=next2019-production'
   - 'CLOUDSDK_CORE_PROJECT=$PROJECT_ID'
 
 - name: gcr.io/cloud-builders/kubectl
@@ -21,4 +21,4 @@ images: [ 'gcr.io/$PROJECT_ID/$_IMAGE:latest', 'gcr.io/$PROJECT_ID/$_IMAGE:$_TAG
 
 substitutions:
   _TAG: prod
-  _IMAGE: nginx-alpine
+  _IMAGE: nginx-alpine-prod

@@ -1,0 +1,24 @@
+steps:
+
+- name: gcr.io/cloud-builders/docker
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$_IMAGE:latest', '-t', 'gcr.io/$PROJECT_ID/$_IMAGE:$_TAG', '.']
+
+- name: gcr.io/cloud-builders/kubectl
+  args: [ 'version' ]
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=europe-west2-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=next2019-development'
+  - 'CLOUDSDK_CORE_PROJECT=$PROJECT_ID'
+
+- name: gcr.io/cloud-builders/kubectl
+  entrypoint: '/bin/sh'
+  args:
+    - -c
+    - >
+      kubectl create deployment nginx --image=gcr.io/$PROJECT_ID/$_IMAGE:$_TAG
+
+images: [ 'gcr.io/$PROJECT_ID/$_IMAGE:latest', 'gcr.io/$PROJECT_ID/$_IMAGE:$_TAG' ]
+
+substitutions:
+  _TAG: prod
+  _IMAGE: nginx-alpine-dev

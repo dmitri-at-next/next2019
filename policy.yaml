@@ -1,0 +1,7 @@
+clusterAdmissionRules:
+  us-east1-a.prod-cluster:
+    evaluationMode: REQUIRE_ATTESTATION
+    enforcementMode: ENFORCED_BLOCK_AND_AUDIT_LOG
+    requireAttestationsBy:
+    - projects/example-project/attestors/secure-build
+    - projects/example-project/attestors/prod-qualified
