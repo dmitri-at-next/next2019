@@ -8,7 +8,7 @@ steps:
   id: 'Push image to Container Registry'
   args:
   - 'push'
-  - 'gcr.io/$PROJECT_ID/hello-app:$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/$_IMAGE:$SHORT_SHA'
 
 - name: gcr.io/cloud-builders/kubectl
   id: 'Configure Production cluster context'
